@@ -16,5 +16,9 @@
 
     <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.css')}}">
-
+    <style>
+        .ck-editor__editable_inline {
+            min-height: 300px;
+        }
+    </style>
 </head>
