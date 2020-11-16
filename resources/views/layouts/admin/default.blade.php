@@ -51,6 +51,8 @@
 <script src="{{asset('js/adminlte.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('js/demo.js')}}"></script>
+
+<script src="{{asset('plugins/select2/js/select2.full.js')}}"></script>
 <script>
     $('.nav-sidebar a').each(function(){
         let location = window.location.protocol + '//' + window.location.host + window.location.pathname;
