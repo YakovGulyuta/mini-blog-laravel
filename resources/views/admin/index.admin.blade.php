@@ -1,4 +1,4 @@
-@extends('layouts.admin.default')
+@extends('layouts.admin.default.admin')
 @section('content')
 <div class="wrapper">
     <!-- Navbar -->
@@ -249,7 +249,7 @@
     <!-- /.content-wrapper -->
 
     {{--FOOTER THIS--}}
-    @include('admin.parts.footer')
+    @include('parts.footer.admin')
 
 </div>
 @endsection
