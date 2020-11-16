@@ -15,6 +15,12 @@
 
 @yield('content')
 
-<script src="{{ asset('assets/admin/js/admin.js') }}"></script>
+<script src="{{asset('js/jquery.js')}}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{asset('js/bootstrap.bundle.js')}}"></script>
+<!-- AdminLTE App -->
+<script src="{{asset('js/adminlte.js')}}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{asset('js/demo.js')}}"></script>
 </body>
 </html>

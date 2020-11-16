@@ -14,6 +14,25 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-            dd(__METHOD__);
+        dd(__METHOD__);
+    }
+
+    public function loginForm()
+    {
+
+        return view('user.login');
+    }
+
+    public function login(Request $request)
+    {
+
+        dd(__METHOD__);
+
+    }
+
+    public function logout()
+    {
+
+        return redirect()->route('login.create');
     }
 }

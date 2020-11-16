@@ -13,6 +13,9 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="{{ route('register.create')  }}" class="nav-link">Регистрация</a>
         </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="{{ route('login')  }}" class="nav-link">Авторизация</a>
+        </li>
     </ul>
 
     <!-- SEARCH FORM -->
