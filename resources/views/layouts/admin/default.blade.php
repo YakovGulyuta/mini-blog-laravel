@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 {{--HEAD THIS--}}
-@include('parts.header.admin')
+@include('parts.admin.header')
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
 
