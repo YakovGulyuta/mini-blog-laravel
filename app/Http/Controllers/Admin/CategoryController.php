@@ -15,7 +15,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = [
-            [   'id' => '1',
+            ['id' => '1',
                 'title' => 'Заголовок',
                 'slug' => 'zagolovok'
             ]
@@ -27,11 +27,11 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -60,11 +60,16 @@ class CategoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function edit($id)
     {
-        //
+        $category = [
+            'id' => '1',
+            'title' => 'Заголовок',
+            'slug' => 'zagolovok'
+        ];
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -76,7 +81,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //return redirect()->route('categories.index')->with('success', 'Изменения сохранены');
     }
 
     /**

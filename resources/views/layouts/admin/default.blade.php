@@ -9,9 +9,9 @@
 @include('parts.admin.navbar.navbar')
 @include('parts.admin.aside.aside')
 {{--THIS CONTENT--}}
-
+    <div class="content-wrapper" style="min-height: 855px;">
 @yield('content')
-
+    </div>
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
 </aside>
