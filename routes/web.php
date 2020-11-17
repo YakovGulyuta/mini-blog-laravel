@@ -13,8 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['namespace' => 'Blog'], function () {
+Route::get('/', 'BlogController@index')->name('home');
+Route::get('/article', 'BlogController@show')->name('article.show');
 });
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {

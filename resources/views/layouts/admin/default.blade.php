@@ -63,8 +63,8 @@
         }
     });
 </script>
-<script src="{{ asset('admin/ckeditor5/build/ckeditor.js') }}"></script>
-<script src="{{ asset('admin/ckfinder/ckfinder.js') }}"></script>
+<script src="{{ asset('admin_editor/ckeditor5/build/ckeditor.js') }}"></script>
+<script src="{{ asset('admin_editor/ckfinder/ckfinder.js') }}"></script>
 
 <script>
     ClassicEditor
