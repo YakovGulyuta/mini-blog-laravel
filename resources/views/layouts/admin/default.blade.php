@@ -53,6 +53,7 @@
 <script src="{{asset('js/demo.js')}}"></script>
 
 <script src="{{asset('plugins/select2/js/select2.full.js')}}"></script>
+<script src="{{asset('plugins/bs-custom-file-input/bs-custom-file-input.js')}}"></script>
 <script>
     $('.nav-sidebar a').each(function(){
         let location = window.location.protocol + '//' + window.location.host + window.location.pathname;
@@ -61,6 +62,10 @@
             $(this).addClass('active');
             $(this).closest('.has-treeview').addClass('menu-open');
         }
+    });
+
+    $(document).ready(function () {
+        bsCustomFileInput.init();
     });
 </script>
 <script src="{{ asset('admin_editor/ckeditor5/build/ckeditor.js') }}"></script>

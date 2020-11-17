@@ -14,8 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['namespace' => 'Blog'], function () {
-Route::get('/', 'BlogController@index')->name('home');
-Route::get('/article', 'BlogController@show')->name('article.show');
+    Route::get('/', 'BlogController@index')->name('home');
+    Route::get('/article', 'BlogController@show')->name('article.show');
+    Route::get('/category', 'CategoryController@show')->name('categories.single');//должны быть статьи по выбранной категории {slug}
+    Route::get('/tag', 'TagController@show')->name('tags.single');
+    Route::get('/search', 'SearchController@index')->name('search');
 });
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
@@ -32,5 +35,6 @@ Route::group(['namespace' => 'User'], function (){
     Route::post('/login', 'UserController@login')->name('login');
 
 });
+
 Route::get('/logout', 'UserController@logout')->name('logout');
 
