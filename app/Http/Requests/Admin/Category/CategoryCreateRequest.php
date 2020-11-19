@@ -13,7 +13,7 @@ class CategoryCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,10 @@ class CategoryCreateRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
-            //
+            'title' => 'required|max:255|unique:categories,title',
+//            'slug'  => 'required'
         ];
     }
     public function messages()

@@ -4,7 +4,11 @@ namespace App\Providers;
 
 use App\Model\Category;
 use App\Observers\CategoryObserver;
+use App\Services\Categories\Repositories\CategoriesRepository;
+use App\Services\Categories\Repositories\CategoryRepositoryInterface;
+use Illuminate\Container\Container;
 use Illuminate\Support\ServiceProvider;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->registerBindings();
     }
 
     /**
@@ -28,4 +32,15 @@ class AppServiceProvider extends ServiceProvider
         Category::observe(CategoryObserver::class);
     }
 
+    private function registerBindings()
+    {
+//        $container = Container::getInstance();
+//        $container->
+//        app()->bind('','');
+        $this->app->bind(
+            CategoryRepositoryInterface::class,
+            CategoriesRepository::class
+        );
+
+    }
 }

@@ -1,5 +1,5 @@
 @extends('layouts.front.default')
-
+@section('title', 'Тестовый блог')
 @section('header')
 
     <section id="cta" class="section">

@@ -25,19 +25,19 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Категория "{{ $category['title'] }}"</h3>
+                            <h3 class="card-title">Категория "{{ $category->title }}"</h3>
                         </div>
                         <!-- /.card-header -->
-
-                        <form role="form" method="post" action="{{ route('categories.update', ['category' => $category['id']]) }}">
+                        @include('admin.errors.validate_errors')
+                        <form role="form" method="post" action="{{ route('categories.update', ['category' => $category->id]) }}">
                             @csrf
-                            @method('PUT')
+                            @method('PATCH')
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="title">Название</label>
                                     <input type="text" name="title"
                                            class="form-control @error('title') is-invalid @enderror" id="title"
-                                           value="{{ $category['title'] }}">
+                                           value="{{ $category->title }}">
                                 </div>
                             </div>
                             <!-- /.card-body -->

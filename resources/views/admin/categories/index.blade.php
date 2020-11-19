@@ -28,6 +28,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
+                                @include('admin.errors.validate_errors')
                                 <a href="{{ route('categories.create') }}" class="btn btn-primary mb-3">Добавить
                                     категорию</a>
                                 @if (count($categories))
@@ -44,15 +45,15 @@
                                             <tbody>
                                             @foreach($categories as $category)
                                                 <tr>
-                                                    <td>{{ $category['id'] }}</td>
-                                                    <td>{{ $category['title'] }}</td>
-                                                    <td>{{ $category['slug'] }}</td>
+                                                    <td>{{ $category->id }}</td>
+                                                    <td>{{ $category->title }}</td>
+                                                    <td>{{ $category->slug }}</td>
                                                     <td>
-                                                        <a href="{{ route('categories.edit', ['category' => $category['id']]) }}" class="btn btn-info btn-sm float-left mr-1">
+                                                        <a href="{{ route('categories.edit', ['category' => $category->id]) }}" class="btn btn-info btn-sm float-left mr-1">
                                                             <i class="fas fa-pencil-alt"></i>
                                                         </a>
 
-                                                        <form action="{{ route('categories.destroy', ['category' => $category['id']]) }}" method="post" class="float-left">
+                                                        <form action="{{ route('categories.destroy', ['category' => $category->id]) }}" method="post" class="float-left">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger btn-sm"
