@@ -1,4 +1,5 @@
 @extends('layouts.user.default')
+@section('title', 'Регистрация')
 @section('content')
 <div class="register-box">
     <div class="register-logo">

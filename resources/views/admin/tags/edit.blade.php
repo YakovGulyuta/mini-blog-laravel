@@ -1,5 +1,5 @@
 @extends('layouts.admin.default')
-
+@section('title', 'Редактирование')
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">

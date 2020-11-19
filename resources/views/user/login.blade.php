@@ -1,4 +1,5 @@
 @extends('layouts.user.default')
+@section('title', 'Логин')
 @section('content')
 <body class="hold-transition register-page">
 <div class="register-box">
