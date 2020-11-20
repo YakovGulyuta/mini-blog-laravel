@@ -28,7 +28,7 @@ class ArticleCreateRequest extends FormRequest
             'title' => 'required',
             'description' => 'required',
             'content' => 'required',
-            'category_id' => 'required|integer',
+            'category_id' => 'integer',
             'thumbnail' => 'nullable|image',
         ];
     }

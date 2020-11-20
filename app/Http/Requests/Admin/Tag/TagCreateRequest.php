@@ -26,7 +26,7 @@ class TagCreateRequest extends FormRequest
 
         return [
             'title' => 'required|max:255|unique:tags,title',
-//            'slug'  => 'required'
+
         ];
     }
     public function messages()

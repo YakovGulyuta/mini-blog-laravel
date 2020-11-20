@@ -13,7 +13,7 @@ class ArticlesRepository implements ArticleRepositoryInterface
      */
     public function findOne(int $articleId)
     {
-        $article = Article::find($articleId)->first();
+        $article = Article::find($articleId);
         return $article;
     }
 
@@ -33,9 +33,11 @@ class ArticlesRepository implements ArticleRepositoryInterface
     public function create(array $data)
     {
         $article = new Article();
-
-        $article->create($data);
+//        if (!empty($data['tags'])){
 //        $article->tags()->sync($data['tags']);
+//
+//    }
+        $article->create($data);
         return $article;
     }
 
@@ -47,9 +49,11 @@ class ArticlesRepository implements ArticleRepositoryInterface
     public function update(array $data, $articleId)
     {
         $article = Article::find($articleId);
-//        if (isset($data['tags'])){
-//        $article->tags()->sync($data['tags']);
-//        }
+        if (!empty($data['tags'])){
+        $article->tags()->sync($data['tags']);
+        } else {
+            $article->tags()->detach();
+        }
         $article->update($data);
         return $article;
     }

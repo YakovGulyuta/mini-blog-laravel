@@ -18,6 +18,7 @@ class ArticleObserver
         $this->setSlug($article);
     }
 
+
     /**
      * Handle the Tag "updating" event.
      *

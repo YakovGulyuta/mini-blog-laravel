@@ -26,7 +26,6 @@ class CategoryCreateRequest extends FormRequest
 
         return [
             'title' => 'required|max:255|unique:categories,title',
-//            'slug'  => 'required'
         ];
     }
     public function messages()

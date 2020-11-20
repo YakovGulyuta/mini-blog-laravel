@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static find(int $tagId)
  * @method create(array $data)
  * @method static paginate(int $perPage)
+ * @method static pluck(string $string, string $string1)
  */
 class Tag extends Model
 {
@@ -16,7 +17,7 @@ class Tag extends Model
         'slug'
     ];
 
-    public function posts()
+    public function articles()
     {
         return $this->belongsToMany(Article::class);
     }
