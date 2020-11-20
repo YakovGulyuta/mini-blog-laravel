@@ -28,6 +28,7 @@
                             <h3 class="card-title">Список статей</h3>
                         </div>
                         <!-- /.card-header -->
+                        @include('admin.errors.validate_errors')
                         <div class="card-body">
                             <a href="{{ route('articles.create') }}" class="btn btn-primary mb-3">Добавить статью</a>
                             @if (count($articles))
@@ -48,10 +49,8 @@
                                             <tr>
                                                 <td>{{ $article->id }}</td>
                                                 <td>{{ $article->title }}</td>
-{{--                                                {{ $article->category['title'] }}--}}
-                                                <td>Категория</td>
-{{--                                                {{ $article['tags'] }}--}}
-                                                <td>Теги</td>
+                                                <td>{{ $article->category->title }}</td>
+                                                <td>{{ $article->tags->pluck('title')->join(', ') }}</td>
                                                 <td>{{ $article->created_at }}</td>
                                                 <td>
                                                     <a href="{{ route('articles.edit', ['article' => $article->id]) }}"
@@ -82,7 +81,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
-{{--                            {{ $posts->links() }}--}}
+                            {{ $articles->links() }}
                         </div>
                     </div>
                     <!-- /.card -->

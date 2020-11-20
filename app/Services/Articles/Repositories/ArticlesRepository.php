@@ -33,7 +33,9 @@ class ArticlesRepository implements ArticleRepositoryInterface
     public function create(array $data)
     {
         $article = new Article();
+
         $article->create($data);
+//        $article->tags()->sync($data['tags']);
         return $article;
     }
 
@@ -45,6 +47,9 @@ class ArticlesRepository implements ArticleRepositoryInterface
     public function update(array $data, $articleId)
     {
         $article = Article::find($articleId);
+//        if (isset($data['tags'])){
+//        $article->tags()->sync($data['tags']);
+//        }
         $article->update($data);
         return $article;
     }
@@ -68,6 +73,7 @@ class ArticlesRepository implements ArticleRepositoryInterface
         $paginate = Article::paginate($perPage);
         return $paginate;
     }
+
 }
 
 

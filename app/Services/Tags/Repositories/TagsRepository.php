@@ -69,6 +69,12 @@ class TagsRepository implements TagRepositoryInterface
         $paginate = Tag::paginate($perPage);
         return $paginate;
     }
+
+    public function pluck()
+    {
+        $tag = Tag::pluck('title', 'id')->all();
+        return $tag;
+    }
 }
 
 

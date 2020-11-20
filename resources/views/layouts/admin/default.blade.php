@@ -28,7 +28,7 @@
 <!-- AdminLTE App -->
 <script src="{{asset('js/adminlte.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{asset('js/demo.js')}}"></script>
+
 
 <script src="{{asset('plugins/select2/js/select2.full.js')}}"></script>
 <script src="{{asset('plugins/bs-custom-file-input/bs-custom-file-input.js')}}"></script>
@@ -48,7 +48,7 @@
 </script>
 <script src="{{ asset('admin_editor/ckeditor5/build/ckeditor.js') }}"></script>
 <script src="{{ asset('admin_editor/ckfinder/ckfinder.js') }}"></script>
-
+<script src="{{asset('js/demo.js')}}"></script>
 <script>
     ClassicEditor
         .create( document.querySelector( '#content' ), {

@@ -9,6 +9,8 @@ use App\Model\Article;
 use App\Model\Category;
 use App\Model\Tag;
 use App\Services\Articles\ArticlesService;
+use App\Services\Categories\CategoriesService;
+use App\Services\Tags\TagsService;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -17,13 +19,30 @@ class ArticleController extends Controller
      * @var ArticlesService
      */
     private $articleService;
+    /**
+     * @var TagsService
+     */
+    private $tagsService;
+    /**
+     * @var CategoriesService
+     */
+    private $categoriesService;
 
     /**
      * tagController constructor.
+     * @param ArticlesService $articleService
+     * @param TagsService $tagsService
+     * @param CategoriesService $categoriesService
      */
-    public function __construct(ArticlesService $articleService)
+    public function __construct(
+        ArticlesService $articleService,
+        TagsService $tagsService,
+        CategoriesService $categoriesService
+    )
     {
         $this->articleService = $articleService;
+        $this->tagsService = $tagsService;
+        $this->categoriesService = $categoriesService;
     }
 
     /**
@@ -34,7 +53,6 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = $this->articleService->paginate();
-//        $articles = $this->articleService->getAll();
 
         return view('admin.articles.index', compact('articles'));
     }
@@ -46,8 +64,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $categories = Category::pluck('title', 'id')->all();
-        $tags = Tag::pluck('title', 'id')->all();
+        $categories = $this->categoriesService->pluck();
+        $tags = $this->tagsService->pluck();
         return view('admin.articles.create', compact('categories', 'tags'));
     }
 
@@ -61,7 +79,7 @@ class ArticleController extends Controller
     {
         $this->articleService->create($request->all());
 
-        return redirect()->route('articles.index')->with('success', 'Статья добавлен');
+        return redirect()->route('articles.index')->with('success', 'Статья добавлена');
     }
 
 
@@ -73,9 +91,10 @@ class ArticleController extends Controller
      */
     public function edit($article)
     {
-        $article = Article::find($article);
-        $categories = Category::pluck('title', 'id')->all();
-        $tags = Tag::pluck('title', 'id')->all();
+
+        $article = $this->articleService->findById($article) ;
+        $categories = $this->categoriesService->pluck();
+        $tags = $this->tagsService->pluck();
         return view('admin.articles.edit', compact('categories', 'tags', 'article'));
     }
 
@@ -83,14 +102,14 @@ class ArticleController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param int $id
+     * @param int $article
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(tagCreateRequest $request, $article)
+    public function update(ArticleCreateRequest $request, $articleId)
     {
-        $article = $this->articleService->update($request->all(), $article);
+        $article = $this->articleService->update($request->all(), $articleId);
         $article = $article->id;
-        return redirect()->route('tags.edit', compact('article'))->with('success', 'Изменения сохранены');
+        return redirect()->route('articles.edit', compact('article'))->with('success', 'Изменения сохранены');
     }
 
     /**
@@ -102,6 +121,6 @@ class ArticleController extends Controller
     public function destroy($article)
     {
         $this->articleService->delete($article);
-        return redirect()->route('articles.index')->with('success', 'Статья удален');
+        return redirect()->route('articles.index')->with('success', 'Статья удалена');
     }
 }

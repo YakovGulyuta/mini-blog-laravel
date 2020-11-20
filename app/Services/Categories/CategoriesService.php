@@ -86,4 +86,14 @@ class CategoriesService
         return $category;
     }
 
+    /**
+     * @return mixed
+     */
+    public function pluck()
+    {
+        $category = $this->categoryRepository->pluck();
+        return $category;
+    }
+
+
 }

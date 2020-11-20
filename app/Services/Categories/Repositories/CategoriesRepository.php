@@ -69,6 +69,12 @@ class CategoriesRepository implements CategoryRepositoryInterface
         $paginate = Category::paginate($perPage);
         return $paginate;
     }
+
+    public function pluck()
+    {
+        $category = Category::pluck('title', 'id')->all();
+        return $category;
+    }
 }
 
 

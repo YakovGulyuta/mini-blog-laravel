@@ -28,7 +28,7 @@
                             <h3 class="card-title">Новая статья</h3>
                         </div>
                         <!-- /.card-header -->
-
+                        @include('admin.errors.validate_errors')
                         <form role="form" method="post" action="{{ route('articles.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">

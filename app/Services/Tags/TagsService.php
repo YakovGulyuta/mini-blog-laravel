@@ -79,4 +79,10 @@ class TagsService
         $tag = $this->tagRepository->paginate($perPage);
         return $tag;
     }
+
+    public function pluck()
+    {
+        $tag = $this->tagRepository->pluck();
+        return $tag;
+    }
 }

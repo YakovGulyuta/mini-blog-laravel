@@ -28,7 +28,7 @@
                             <h3 class="card-title">Статья "{{ $article->title }}"</h3>
                         </div>
                         <!-- /.card-header -->
-
+                        @include('admin.errors.validate_errors')
                         <form role="form" method="post" action="{{ route('articles.update', ['article' => $article->id]) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')

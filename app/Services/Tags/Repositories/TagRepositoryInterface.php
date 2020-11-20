@@ -19,4 +19,6 @@ interface TagRepositoryInterface
 
     public function paginate(int $perPage = 2);
 
+    public function pluck();
+
 }
