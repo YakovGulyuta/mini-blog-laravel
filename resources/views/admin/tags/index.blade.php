@@ -27,8 +27,9 @@
                                 <h3 class="card-title">Список Тэгов</h3>
                             </div>
                             <!-- /.card-header -->
+                            @include('admin.errors.validate_errors')
                             <div class="card-body">
-                                <a href="{{ route('categories.create') }}" class="btn btn-primary mb-3">Добавить
+                                <a href="{{ route('tags.create') }}" class="btn btn-primary mb-3">Добавить
                                     Тег</a>
                                 @if (count($tags))
                                     <div class="table-responsive">
@@ -44,15 +45,15 @@
                                             <tbody>
                                             @foreach($tags as $tag)
                                                 <tr>
-                                                    <td>{{ $tag['id'] }}</td>
-                                                    <td>{{ $tag['title'] }}</td>
-                                                    <td>{{ $tag['slug'] }}</td>
+                                                    <td>{{ $tag->id }}</td>
+                                                    <td>{{ $tag->title }}</td>
+                                                    <td>{{ $tag->slug }}</td>
                                                     <td>
-                                                        <a href="{{ route('tags.edit', ['tag' => $tag['id']]) }}" class="btn btn-info btn-sm float-left mr-1">
+                                                        <a href="{{ route('tags.edit', ['tag' => $tag->id]) }}" class="btn btn-info btn-sm float-left mr-1">
                                                             <i class="fas fa-pencil-alt"></i>
                                                         </a>
 
-                                                        <form action="{{ route('tags.destroy', ['tag' => $tag['id']]) }}" method="post" class="float-left">
+                                                        <form action="{{ route('tags.destroy', ['tag' => $tag->id]) }}" method="post" class="float-left">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger btn-sm"
@@ -73,14 +74,8 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer clearfix">
-{{--                                {{ $categories->links() }}--}}
-                                <ul class="pagination pagination-sm m-0 float-right">
-                                    <li class="page-item"><a class="page-link" href="#">«</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">»</a></li>
-                                </ul>
+                                {{ $tags->links() }}
+
                             </div>
                         </div>
                         <!-- /.card -->

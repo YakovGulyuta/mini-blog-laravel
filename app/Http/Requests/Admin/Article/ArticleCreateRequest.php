@@ -13,7 +13,7 @@ class ArticleCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,19 @@ class ArticleCreateRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
-            //
+            'title' => 'required',
+            'description' => 'required',
+            'content' => 'required',
+            'category_id' => 'required|integer',
+            'thumbnail' => 'nullable|image',
+        ];
+    }
+    public function messages()
+    {
+        return [
+
         ];
     }
 }

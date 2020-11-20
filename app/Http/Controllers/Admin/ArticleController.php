@@ -3,10 +3,29 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Article\ArticleCreateRequest;
+use App\Http\Requests\Admin\Tag\TagCreateRequest;
+use App\Model\Article;
+use App\Model\Category;
+use App\Model\Tag;
+use App\Services\Articles\ArticlesService;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+    /**
+     * @var ArticlesService
+     */
+    private $articleService;
+
+    /**
+     * tagController constructor.
+     */
+    public function __construct(ArticlesService $articleService)
+    {
+        $this->articleService = $articleService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,13 +33,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = [
-            ['id' => '1',
-                'title' => 'Заголовок',
-                'slug' => 'zagolovok',
-                'created_at' => '12344'
-            ]
-        ];
+        $articles = $this->articleService->paginate();
+//        $articles = $this->articleService->getAll();
 
         return view('admin.articles.index', compact('articles'));
     }
@@ -32,42 +46,24 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $categories = [
-            [   'id' => '1',
-                'title' => 'Заголовок',
-
-            ]
-        ];
-        $tags = [
-            ['id' => '1',
-                'title' => 'Тег',
-
-            ]
-        ];
-        return view('admin.articles.create', compact('categories','tags'));
+        $categories = Category::pluck('title', 'id')->all();
+        $tags = Tag::pluck('title', 'id')->all();
+        return view('admin.articles.create', compact('categories', 'tags'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(ArticleCreateRequest $request)
     {
-        //
+        $this->articleService->create($request->all());
+
+        return redirect()->route('articles.index')->with('success', 'Статья добавлен');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -75,14 +71,12 @@ class ArticleController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit($article)
     {
-        $article = [
-            'id' => '1',
-            'title' => 'Заголовок',
-            'slug' => 'zagolovok'
-        ];
-        return view('admin.articles.edit', compact('article'));
+        $article = Article::find($article);
+        $categories = Category::pluck('title', 'id')->all();
+        $tags = Tag::pluck('title', 'id')->all();
+        return view('admin.articles.edit', compact('categories', 'tags', 'article'));
     }
 
     /**
@@ -90,21 +84,24 @@ class ArticleController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(tagCreateRequest $request, $article)
     {
-        //return redirect()->route('articles.index')->with('success', 'Изменения сохранены');
+        $article = $this->articleService->update($request->all(), $article);
+        $article = $article->id;
+        return redirect()->route('tags.edit', compact('article'))->with('success', 'Изменения сохранены');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy($article)
     {
-        //
+        $this->articleService->delete($article);
+        return redirect()->route('articles.index')->with('success', 'Статья удален');
     }
 }

@@ -1,12 +1,10 @@
 <?php
 
 
-namespace App\Services\Categories\Repositories;
+namespace App\Services\Tags\Repositories;
 
 
-use App\Model\Category;
-
-interface CategoryRepositoryInterface
+interface TagRepositoryInterface
 {
 
     public function findOne(int $id);
@@ -15,7 +13,7 @@ interface CategoryRepositoryInterface
 
     public function create(array $data);
 
-    public function update(array $data, int $categoryId);
+    public function update(array $data, int $tagId);
 
     public function destroy(int $id);
 

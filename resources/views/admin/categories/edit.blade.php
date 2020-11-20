@@ -31,7 +31,7 @@
                         @include('admin.errors.validate_errors')
                         <form role="form" method="post" action="{{ route('categories.update', ['category' => $category->id]) }}">
                             @csrf
-                            @method('PATCH')
+                            @method('PUT')
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="title">Название</label>

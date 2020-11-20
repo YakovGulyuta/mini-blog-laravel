@@ -53,10 +53,10 @@
 
                                 <div class="form-group">
                                     <label for="category_id">Категория</label>
-                                    <select class="form-control" id="category_id" name="category_id">
-{{--                                        @foreach($categories as $k => $v)--}}
-{{--                                            <option value="{{ $k }}">{{ $v }}</option>--}}
-{{--                                        @endforeach--}}
+                                    <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" name="category_id">
+                                        @foreach($categories as $k => $v)
+                                            <option value="{{ $k }}">{{ $v }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
@@ -64,9 +64,9 @@
                                     <label for="tags">Теги</label>
                                     <select name="tags[]" id="tags" class="select2" multiple="multiple"
                                             data-placeholder="Выбор тегов" style="width: 100%;">
-{{--                                        @foreach($tags as $k => $v)--}}
-{{--                                            <option value="{{ $k }}">{{ $v }}</option>--}}
-{{--                                        @endforeach--}}
+                                        @foreach($tags as $k => $v)
+                                            <option value="{{ $k }}">{{ $v }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 

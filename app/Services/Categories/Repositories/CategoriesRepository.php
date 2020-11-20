@@ -31,7 +31,7 @@ class CategoriesRepository implements CategoryRepositoryInterface
      * @param array $data
      * @return Category
      */
-    public function create(array $data): Category
+    public function create(array $data)
     {
         $category = new Category();
         $category->create($data);
@@ -64,7 +64,7 @@ class CategoriesRepository implements CategoryRepositoryInterface
      * @param int $perPage
      * @return mixed
      */
-    public function paginate(int $perPage)
+    public function paginate(int $perPage = 2)
     {
         $paginate = Category::paginate($perPage);
         return $paginate;

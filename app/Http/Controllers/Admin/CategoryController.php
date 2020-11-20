@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Category\CategoryCreateRequest;
 use App\Model\Category;
 use App\Services\Categories\CategoriesService;
-use App\Services\Categories\Repositories\CategoryRepositoryInterface;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -31,7 +30,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = $this->categoriesService->getAll();
+        $categories = $this->categoriesService->paginate();
+//        $categories = $this->categoriesService->getAll();
 
         return view('admin.categories.index', compact('categories'));
     }
@@ -58,6 +58,7 @@ class CategoryController extends Controller
 
         return redirect()->route('categories.index')->with('success', 'Категория добавлена');
     }
+
 
     /**
      * Show the form for editing the specified resource.

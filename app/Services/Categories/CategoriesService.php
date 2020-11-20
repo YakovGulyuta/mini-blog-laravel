@@ -76,4 +76,14 @@ class CategoriesService
         return $category;
     }
 
+    /**
+     * @param int $perPage
+     * @return mixed
+     */
+    public function paginate($perPage = 2)
+    {
+        $category = $this->categoryRepository->paginate($perPage);
+        return $category;
+    }
+
 }

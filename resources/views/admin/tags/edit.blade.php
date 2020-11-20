@@ -25,11 +25,11 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Категория "{{ $tag['title'] }}"</h3>
+                            <h3 class="card-title">Категория "{{ $tag->title }}"</h3>
                         </div>
                         <!-- /.card-header -->
-
-                        <form role="form" method="post" action="{{ route('tags.update', ['tag' => $tag['id']]) }}">
+                        @include('admin.errors.validate_errors')
+                        <form role="form" method="post" action="{{ route('tags.update', ['tag' => $tag->id]) }}">
                             @csrf
                             @method('PUT')
                             <div class="card-body">
@@ -37,7 +37,7 @@
                                     <label for="title">Название</label>
                                     <input type="text" name="title"
                                            class="form-control @error('title') is-invalid @enderror" id="title"
-                                           value="{{ $tag['title'] }}">
+                                           value="{{ $tag->title }}">
                                 </div>
                             </div>
                             <!-- /.card-body -->

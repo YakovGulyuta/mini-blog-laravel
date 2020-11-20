@@ -46,21 +46,21 @@
                                         <tbody>
                                         @foreach($articles as $article)
                                             <tr>
-                                                <td>{{ $article['id'] }}</td>
-                                                <td>{{ $article['title'] }}</td>
+                                                <td>{{ $article->id }}</td>
+                                                <td>{{ $article->title }}</td>
 {{--                                                {{ $article->category['title'] }}--}}
                                                 <td>Категория</td>
 {{--                                                {{ $article['tags'] }}--}}
                                                 <td>Теги</td>
-                                                <td>{{ $article['created_at'] }}</td>
+                                                <td>{{ $article->created_at }}</td>
                                                 <td>
-                                                    <a href="{{ route('articles.edit', ['article' => $article['id']]) }}"
+                                                    <a href="{{ route('articles.edit', ['article' => $article->id]) }}"
                                                        class="btn btn-info btn-sm float-left mr-1">
                                                         <i class="fas fa-pencil-alt"></i>
                                                     </a>
 
                                                     <form
-                                                        action="{{ route('articles.destroy', ['article' => $article['id']]) }}"
+                                                        action="{{ route('articles.destroy', ['article' => $article->id]) }}"
                                                         method="post" class="float-left">
                                                         @csrf
                                                         @method('DELETE')

@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Services\Categories\Repositories;
+namespace App\Services\Articles\Repositories;
 
 
 use App\Model\Category;
 
-interface CategoryRepositoryInterface
+interface ArticleRepositoryInterface
 {
 
     public function findOne(int $id);

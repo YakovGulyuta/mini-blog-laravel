@@ -13,7 +13,7 @@ class TagCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,16 @@ class TagCreateRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
-            //
+            'title' => 'required|max:255|unique:tags,title',
+//            'slug'  => 'required'
+        ];
+    }
+    public function messages()
+    {
+        return [
+
         ];
     }
 }

@@ -29,7 +29,7 @@
                             <h3 class="card-title">Создание Тега</h3>
                         </div>
                         <!-- /.card-header -->
-
+                        @include('admin.errors.validate_errors')
                         <form role="form" method="post" action="{{ route('tags.store') }}">
                             @csrf
                             <div class="card-body">
@@ -37,7 +37,7 @@
                                     <label for="title">Название</label>
                                     <input type="text" name="title"
                                            class="form-control @error('title') is-invalid @enderror" id="title"
-                                           placeholder="Название">
+                                           placeholder="{{old('title')}}">
                                 </div>
                             </div>
                             <!-- /.card-body -->
