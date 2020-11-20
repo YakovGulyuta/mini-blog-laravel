@@ -8,6 +8,9 @@ use App\Model\Category;
 use App\Services\Categories\CategoriesService;
 use Illuminate\Http\Request;
 
+/**
+ * @property CategoriesService categoriesService
+ */
 class CategoryController extends Controller
 {
     /**

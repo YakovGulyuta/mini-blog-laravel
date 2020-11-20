@@ -95,5 +95,11 @@ class CategoriesService
         return $category;
     }
 
+    public function findBySlug(string $slug)
+    {
+        $category = $this->categoryRepository->findBySlug($slug);
+        return $category;
+    }
+
 
 }

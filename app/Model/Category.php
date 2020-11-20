@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
  * @method static find(int $id)
  * @method static create(array $data)
  * @method static paginate(int $perPage)
+ * @method static withCount(string $string)
  */
 class Category extends Model
 {

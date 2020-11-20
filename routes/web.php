@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'Blog'], function () {
     Route::get('/', 'BlogController@index')->name('home');
     Route::get('/article', 'BlogController@show')->name('article.show');
-    Route::get('/category', 'CategoryController@show')->name('categories.single');//должны быть статьи по выбранной категории {slug}
+    Route::get('/category/{slug}', 'CategoryController@show')->name('category.show');//должны быть статьи по выбранной категории {slug}
     Route::get('/tag', 'TagController@show')->name('tags.single');
     Route::get('/search', 'SearchController@index')->name('search');
 });

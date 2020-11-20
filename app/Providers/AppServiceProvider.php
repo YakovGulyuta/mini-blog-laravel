@@ -14,6 +14,7 @@ use App\Services\Categories\Repositories\CategoriesRepository;
 use App\Services\Categories\Repositories\CategoryRepositoryInterface;
 use App\Services\Tags\Repositories\TagRepositoryInterface;
 use App\Services\Tags\Repositories\TagsRepository;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
 
 
@@ -39,6 +40,17 @@ class AppServiceProvider extends ServiceProvider
         Category::observe(CategoryObserver::class);
         Tag::observe(TagObserver::class);
         Article::observe(ArticleObserver::class);
+
+        view()->composer('parts.front.navbar', function ($view) {
+//            if (Cache::has('cats'))
+//                $cats = Cache::get('cats');
+
+                $cats = Category::withCount('articles')->orderBy('articles_count', 'desc')->get();
+//                Cache::put('cats', $cats, 30);
+
+            $view->with('popular_articles', Article::orderBy('views', 'desc')->limit(3)->get());
+            $view->with('cats', $cats);
+        });
     }
 
     private function registerBindings()

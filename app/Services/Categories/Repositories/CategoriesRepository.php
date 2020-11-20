@@ -18,6 +18,12 @@ class CategoriesRepository implements CategoryRepositoryInterface
         return $category;
     }
 
+    public function findBySlug(string $slug)
+    {
+        $category = Category::where('slug', $slug)->first();
+        return $category;
+    }
+
     /**
      * @return Category[]|\Illuminate\Database\Eloquent\Collection
      */

@@ -52,8 +52,8 @@
                         <h4><a href="{{ route('article.show') }}"
                                title="">{{1}}</a></h4>
                         {!! 2 !!}
-                        <small><a href="{{ route('categories.single') }}"
-                                  title="">{{1}}</a></small>
+{{--                        <small><a href="{{ route('category.show') }}"--}}
+{{--                                  title="">{{1}}</a></small>--}}
                         <small>{{1}}</small>
                         <small><i class="fa fa-eye"></i> {{1}}</small>
                     </div><!-- end meta -->
