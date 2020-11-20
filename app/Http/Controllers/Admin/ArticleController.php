@@ -111,7 +111,7 @@ class ArticleController extends Controller
      */
     public function update(ArticleCreateRequest $request, $articleId)
     {
-//        dd($request->all());
+//        dd($request->file());
         $article = $this->articleService->update($request->all(), $articleId);
         $article = $article->id;
         return redirect()->route('articles.edit', compact('article'))->with('success', 'Изменения сохранены');
