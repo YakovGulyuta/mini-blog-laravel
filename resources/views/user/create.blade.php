@@ -9,15 +9,7 @@
     <div class="card">
         <div class="card-body register-card-body">
 
-{{--            @if ($errors->any())--}}
-{{--                <div class="alert alert-danger">--}}
-{{--                    <ul class="list-unstyled">--}}
-{{--                        @foreach ($errors->all() as $error)--}}
-{{--                            <li>{{ $error }}</li>--}}
-{{--                        @endforeach--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
-{{--            @endif--}}
+            @include('admin.errors.validate_errors')
 
             <form action="{{ route('register.store') }}" method="post">
                 @csrf

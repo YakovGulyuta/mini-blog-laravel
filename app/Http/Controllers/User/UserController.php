@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\UserCreateRequest;
+use App\Http\Requests\User\UserLoginRequest;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -12,7 +14,7 @@ class UserController extends Controller
         return view('user.create');
     }
 
-    public function store(Request $request)
+    public function store(UserCreateRequest $request)
     {
         dd(__METHOD__);
     }
@@ -23,7 +25,7 @@ class UserController extends Controller
         return view('user.login');
     }
 
-    public function login(Request $request)
+    public function login(UserLoginRequest $request)
     {
 
         dd(__METHOD__);
