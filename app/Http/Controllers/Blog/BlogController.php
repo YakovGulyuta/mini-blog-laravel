@@ -25,7 +25,7 @@ class BlogController extends Controller
     protected function index()
     {
 
-        $articles = $this->articlesService->getAll();
+        $articles = $this->articlesService->paginate(2);
 
         return view('front.index', compact('articles'));
     }

@@ -32,14 +32,14 @@
         </div><!-- end content -->
 
         <div class="blog-title-area">
-{{--            @if($article->tags->count())--}}
-{{--                <div class="tag-cloud-single">--}}
-{{--                    <span>Tags</span>--}}
-{{--                    @foreach($article->tags as $tag)--}}
-{{--                        <small><a href="{{ route('tags.show', ['slug' => $tag->slug]) }}" title="">{{ $tag->title }}</a></small>--}}
-{{--                    @endforeach--}}
-{{--                </div><!-- end meta -->--}}
-{{--            @endif--}}
+            @if($article->tags->count())
+                <div class="tag-cloud-single">
+                    <span>Tags</span>
+                    @foreach($article->tags as $tag)
+                        <small><a href="{{ route('tag.show', ['slug' => $tag->slug]) }}" title="">{{ $tag->title }}</a></small>
+                    @endforeach
+                </div><!-- end meta -->
+            @endif
 
         </div><!-- end title -->
 

@@ -18,7 +18,7 @@ Route::group(['namespace' => 'Blog'], function () {
     Route::get('/articles/{slug}', 'BlogController@show')->name('articles.show');
     Route::get('/article/{slug}', 'ArticleController@show')->name('article.show');
     Route::get('/category/{slug}', 'CategoryController@show')->name('category.show');//должны быть статьи по выбранной категории {slug}
-    Route::get('/tag/{slug}', 'TagController@show')->name('tags.show');
+    Route::get('/tag/{slug}', 'TagController@show')->name('tag.show');
     Route::get('/search', 'SearchController@index')->name('search');
 });
 
