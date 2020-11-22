@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static paginate(int $perPage)
  * @method static orderBy(string $string, string $string1)
  * @method static where(string $string, string $slug)
+ * @method static like($s)
  */
 class Article extends Model
 {
@@ -30,5 +31,10 @@ class Article extends Model
     public function getArticleDate()
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d F, Y');
+    }
+
+    public function scopeLike($query, $s)
+    {
+        return $query->where('title', 'LIKE', "%{$s}%");
     }
 }

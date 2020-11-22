@@ -15,7 +15,7 @@ class BlogController extends Controller
 
     /**
      * BlogController constructor.
-     * @param ArticlesService $categoriesService
+     * @param ArticlesService $articlesService
      */
     public function __construct(ArticlesService $articlesService)
     {
