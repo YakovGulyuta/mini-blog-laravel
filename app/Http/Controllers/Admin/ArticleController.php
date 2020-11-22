@@ -77,7 +77,7 @@ class ArticleController extends Controller
      */
     public function store(ArticleCreateRequest $request)
     {
-//        dd($request->all());
+
         $this->articleService->create($request->all());
 
         return redirect()->route('articles.index')->with('success', 'Статья добавлена');
@@ -94,11 +94,9 @@ class ArticleController extends Controller
     {
 
 
-//        dd($article);
         $article = $this->articleService->findById($article) ;
         $categories = $this->categoriesService->pluck();
         $tags = $this->tagsService->pluck();
-//        dd($tags);
         return view('admin.articles.edit', compact('categories', 'tags', 'article'));
     }
 
@@ -111,7 +109,6 @@ class ArticleController extends Controller
      */
     public function update(ArticleCreateRequest $request, $articleId)
     {
-//        dd($request->file());
         $article = $this->articleService->update($request->all(), $articleId);
         $article = $article->id;
         return redirect()->route('articles.edit', compact('article'))->with('success', 'Изменения сохранены');

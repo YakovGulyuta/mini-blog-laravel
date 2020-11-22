@@ -33,10 +33,6 @@ class ArticlesRepository implements ArticleRepositoryInterface
     public function create(array $data)
     {
         $article = new Article();
-//        if (!empty($data['tags'])){
-//        $article->tags()->sync($data['tags']);
-//
-//    }
         $article->create($data);
         return $article;
     }
