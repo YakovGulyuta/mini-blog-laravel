@@ -24,11 +24,11 @@
 
     <div class="page-wrapper">
         <div class="blog-custom-build">
-
-{{--            @foreach($posts as $post)--}}
+            @if(count($articles))
+            @foreach($articles as $article)
                 <div class="blog-box wow fadeIn">
                     <div class="post-media">
-                        <a href="{{ route('article.show')}}" title="">
+                        <a href="{{ route('article.show', ['slug' => $article->slug]) }}" title="">
                             <img src="{{1}}" alt="" class="img-fluid">
                             <div class="hovereffect">
                                 <span></span>
@@ -49,18 +49,21 @@
                             </ul>
                         </div><!-- end post-sharing -->
 
-                        <h4><a href="{{ route('article.show') }}"
-                               title="">{{1}}</a></h4>
-                        {!! 2 !!}
-{{--                        <small><a href="{{ route('category.show') }}"--}}
-{{--                                  title="">{{1}}</a></small>--}}
-                        <small>{{1}}</small>
-                        <small><i class="fa fa-eye"></i> {{1}}</small>
+                        <h4><a href="{{ route('article.show',['slug' => $article->slug]) }}"
+                               title="">{{ $article->title }}</a></h4>
+                        {!! $article->description !!}
+                        <small><a href="{{ route('category.show', ['slug' => $category->slug]) }}"
+                                  title="">{{ $category->title }}</a></small>
+{{--                        <small>{{ $post->getPostDate() }}</small>--}}
+                        <small><i class="fa fa-eye"></i> {{ $article->views }}</small>
                     </div><!-- end meta -->
                 </div><!-- end blog-box -->
 
                 <hr class="invis">
-{{--        @endforeacharticle--}}
+        @endforeach
+            @else
+                Статей нет ...
+            @endif
         </div>
     </div>
 
@@ -69,7 +72,7 @@
     <div class="row">
         <div class="col-md-12">
             <nav aria-label="Page navigation">
-{{--              {{ $posts->links() }}--}}
+              {{ $articles->links() }}
             </nav>
         </div><!-- end col -->
     </div><!-- end row -->

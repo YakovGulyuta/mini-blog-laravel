@@ -15,13 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'Blog'], function () {
     Route::get('/', 'BlogController@index')->name('home');
-    Route::get('/article', 'BlogController@show')->name('article.show');
+    Route::get('/articles/{slug}', 'BlogController@show')->name('articles.show');
+    Route::get('/article/{slug}', 'ArticleController@show')->name('article.show');
     Route::get('/category/{slug}', 'CategoryController@show')->name('category.show');//должны быть статьи по выбранной категории {slug}
-    Route::get('/tag', 'TagController@show')->name('tags.single');
+    Route::get('/tag/{slug}', 'TagController@show')->name('tags.show');
     Route::get('/search', 'SearchController@index')->name('search');
 });
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::get('/', 'DashboardController@index')->name('admin.index');
     Route::resource('/categories', 'CategoryController');
     Route::resource('/tags', 'TagController');

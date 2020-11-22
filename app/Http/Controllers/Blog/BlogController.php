@@ -3,34 +3,31 @@
 namespace App\Http\Controllers\Blog;
 
 use App\Http\Controllers\Controller;
+use App\Services\Articles\ArticlesService;
 use App\Services\Categories\CategoriesService;
 use Illuminate\Http\Request;
 
-/**
- * @property CategoriesService categoriesService
- */
+
 class BlogController extends Controller
 {
-    /**
-     * @var CategoriesService
-     */
-    private $categoriesService;
+
+    private $articlesService;
 
     /**
      * BlogController constructor.
-     * @param CategoriesService $categoriesService
+     * @param ArticlesService $categoriesService
      */
-    public function __construct(CategoriesService $categoriesService)
+    public function __construct(ArticlesService $articlesService)
     {
-        $this->categoriesService = $categoriesService;
+        $this->articlesService = $articlesService;
     }
 
     protected function index()
     {
 
-        $categories = $this->categoriesService->getAll();
+        $articles = $this->articlesService->getAll();
 
-        return view('front.index', compact('categories'));
+        return view('front.index', compact('articles'));
     }
 
 

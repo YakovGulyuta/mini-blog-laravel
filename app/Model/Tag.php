@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method create(array $data)
  * @method static paginate(int $perPage)
  * @method static pluck(string $string, string $string1)
+ * @method static where(string $string, $slug)
  */
 class Tag extends Model
 {

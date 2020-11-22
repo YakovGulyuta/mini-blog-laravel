@@ -14,7 +14,7 @@ class TagsRepository implements TagRepositoryInterface
      */
     public function findOne(int $tagId)
     {
-        $tag = Tag::find($tagId)->first();
+        $tag = Tag::find($tagId);
         return $tag;
     }
 

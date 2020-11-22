@@ -42,15 +42,20 @@ class AppServiceProvider extends ServiceProvider
         Article::observe(ArticleObserver::class);
 
         view()->composer('parts.front.navbar', function ($view) {
+            $cats = Category::all();
+            $view->with('cats', $cats);
+        });
+
+//        view()->composer('parts.front.navbar', function ($view) {
 //            if (Cache::has('cats'))
 //                $cats = Cache::get('cats');
 
-                $cats = Category::withCount('articles')->orderBy('articles_count', 'desc')->get();
+//                $cats = Category::withCount('articles')->orderBy('articles_count', 'desc')->get();
 //                Cache::put('cats', $cats, 30);
 
-            $view->with('popular_articles', Article::orderBy('views', 'desc')->limit(3)->get());
-            $view->with('cats', $cats);
-        });
+//            $view->with('popular_articles', Article::orderBy('views', 'desc')->limit(3)->get());
+//            $view->with('cats', $cats);
+//        });
     }
 
     private function registerBindings()

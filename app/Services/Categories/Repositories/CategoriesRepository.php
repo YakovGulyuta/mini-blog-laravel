@@ -14,7 +14,7 @@ class CategoriesRepository implements CategoryRepositoryInterface
      */
     public function findOne(int $categoryId)
     {
-        $category = Category::find($categoryId)->first();
+        $category = Category::find($categoryId);
         return $category;
     }
 

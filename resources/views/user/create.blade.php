@@ -13,7 +13,7 @@
 
             <form action="{{ route('register.store') }}" method="post">
                 @csrf
-
+                @method('POST')
                 <div class="input-group mb-3">
                     <input type="text" name="name" class="form-control" placeholder="Name" value="{{ old('name') }}">
                     <div class="input-group-append">

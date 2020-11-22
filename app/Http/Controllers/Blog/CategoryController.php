@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Blog;
 
 use App\Http\Controllers\Controller;
+use App\Model\Article;
 use App\Model\Category;
 use App\Services\Categories\CategoriesService;
 use Illuminate\Http\Request;
@@ -29,9 +30,9 @@ class CategoryController extends Controller
 
     public function show($slug)
     {
-//        $categories = $this->categoriesService->getAll();
-        $category = $this->categoriesService->findBySlug($slug);
 
-        return view('front.categories.show', compact('category'));
+        $category = $this->categoriesService->findBySlug($slug);
+        $articles = $category->posts()->orderBy('id', 'desc')->paginate(1);
+        return view('front.categories.show', compact('category', 'articles'));
     }
 }

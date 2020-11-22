@@ -21,7 +21,7 @@
     </section>
     <!-- Main content -->
     <section class="content">
-
+    @include('admin.errors.validate_errors')
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
