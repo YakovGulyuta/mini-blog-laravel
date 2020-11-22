@@ -3,16 +3,14 @@
 namespace App\Http\Controllers\Blog;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Search\SearchRequest;
 use App\Model\Article;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    public function index(Request $request)
+    public function index(SearchRequest $request)//переделать
     {
-        $request->validate([
-            's' => 'required',
-        ]);
 
         $s = $request->s;
         $articles = Article::like($s)->with('category')->paginate(2);
