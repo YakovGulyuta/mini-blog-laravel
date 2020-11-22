@@ -31,9 +31,7 @@ class ArticleController extends Controller
      */
     public function show($slug)
     {
-        $article = Article::where('slug', $slug)->firstOrFail();
-//        $article->views += 1;
-//        $article->update();
+        $article = $this->articlesService->findBySlug($slug);
         return view('front.articles.show', compact('article'));
     }
 

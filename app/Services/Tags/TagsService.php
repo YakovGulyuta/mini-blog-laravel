@@ -70,6 +70,12 @@ class TagsService
         return $tag;
     }
 
+    public function findBySlug($slug)
+    {
+        $tag = $this->tagRepository->findBySlug($slug);
+        return $tag;
+    }
+
     /**
      * @param int $perPage
      * @return mixed

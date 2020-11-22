@@ -18,6 +18,18 @@ class ArticlesRepository implements ArticleRepositoryInterface
     }
 
     /**
+     * @param string $slug
+     * @return mixed
+     */
+    public function findBySlug(string $slug)
+    {
+        $article = Article::where('slug', $slug)->first();
+        $article->views += 1;
+        $article->update();
+        return $article;
+    }
+
+    /**
      * @return article[]|\Illuminate\Database\Eloquent\Collection
      */
     public function getAll()

@@ -12,7 +12,6 @@
                 <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs-down hidden-sm-down">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-{{--                        <li class="breadcrumb-item active">{{ $category->title }}</li>--}}
                     </ol>
                 </div><!-- end col -->
             </div><!-- end row -->
@@ -25,10 +24,10 @@
     <div class="page-wrapper">
         <div class="blog-custom-build">
 
-{{--            @foreach($posts as $post)--}}
+            @foreach($articles as $article)
                 <div class="blog-box wow fadeIn">
                     <div class="post-media">
-                        <a href="{{ route('article.show')}}" title="">
+                        <a href="{{ route('article.show', ['slug' => $article->slug])}}" title="">
                             <img src="{{1}}" alt="" class="img-fluid">
                             <div class="hovereffect">
                                 <span></span>
@@ -49,18 +48,18 @@
                             </ul>
                         </div><!-- end post-sharing -->
 
-                        <h4><a href="{{ route('article.show') }}"
-                               title="">{{1}}</a></h4>
-                        {!! 2 !!}
-                        <small><a href="{{ route('categories.single') }}"
-                                  title="">{{1}}</a></small>
-                        <small>{{1}}</small>
-                        <small><i class="fa fa-eye"></i> {{1}}</small>
+                        <h4><a href="{{ route('article.show', ['slug' => $article->slug]) }}"
+                               title="">{{ $article->title }}</a></h4>
+                        {!! $article->description !!}
+                        <small><a href="{{ route('category.show', ['slug' => $article->category->slug]) }}"
+                                  title="">{{ $article->category->title }}</a></small>
+                        <small>{{ $article->getArticleDate() }}</small>
+                        <small><i class="fa fa-eye"></i> {{ $article->views }}</small>
                     </div><!-- end meta -->
                 </div><!-- end blog-box -->
 
                 <hr class="invis">
-{{--        @endforeacharticle--}}
+        @endforeach
         </div>
     </div>
 
@@ -69,7 +68,7 @@
     <div class="row">
         <div class="col-md-12">
             <nav aria-label="Page navigation">
-{{--              {{ $posts->links() }}--}}
+              {{ $articles->links() }}
             </nav>
         </div><!-- end col -->
     </div><!-- end row -->

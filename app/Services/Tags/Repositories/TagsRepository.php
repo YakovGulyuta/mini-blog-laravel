@@ -19,6 +19,16 @@ class TagsRepository implements TagRepositoryInterface
     }
 
     /**
+     * @param string $slug
+     * @return mixed
+     */
+    public function findBySlug(string $slug)
+    {
+        $tag = Tag::where('slug', $slug)->first();
+        return $tag;
+    }
+
+    /**
      * @return tag[]|\Illuminate\Database\Eloquent\Collection
      */
     public function getAll()

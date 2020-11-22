@@ -25,8 +25,8 @@ class TagController extends Controller
 
     public function show($slug)
     {
-        $tag = Tag::where('slug', $slug)->firstOrFail();
-        $articles = $tag->articles()->with('category')->orderBy('id', 'desc')->paginate(1);
+        $tag = $this->tagsService->findBySlug($slug);
+        $articles = $tag->articles()->with('category')->orderBy('id', 'desc')->paginate(1);//доделать
         return view('front.tags.show', compact('tag', 'articles'));
 
     }

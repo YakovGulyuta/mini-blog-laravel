@@ -32,7 +32,7 @@ class CategoryController extends Controller
     {
 
         $category = $this->categoriesService->findBySlug($slug);
-        $articles = $category->posts()->orderBy('id', 'desc')->paginate(1);
+        $articles = $category->posts()->orderBy('id', 'desc')->paginate(1);//доделать
         return view('front.categories.show', compact('category', 'articles'));
     }
 }

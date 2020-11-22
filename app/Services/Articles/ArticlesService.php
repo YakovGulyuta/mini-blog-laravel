@@ -69,6 +69,12 @@ class ArticlesService
         return $article;
     }
 
+    public function findBySlug($slug)
+    {
+        $article = $this->articleRepository->findBySlug($slug);
+        return $article;
+    }
+
     /**
      * @param int $perPage
      * @return mixed
