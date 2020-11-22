@@ -2,6 +2,7 @@
 
 namespace App\Services\Articles\Repositories;
 
+use App\Http\Requests\Admin\Article\ArticleCreateRequest;
 use App\Model\Article;
 
 class ArticlesRepository implements ArticleRepositoryInterface
@@ -54,7 +55,7 @@ class ArticlesRepository implements ArticleRepositoryInterface
      * @param int $articleId
      * @return mixed
      */
-    public function update(array $data, $articleId)
+    public function update($data, $articleId)
     {
         $article = Article::find($articleId);
         if (!empty($data['tags'])){
@@ -62,7 +63,6 @@ class ArticlesRepository implements ArticleRepositoryInterface
         } else {
             $article->tags()->detach();
         }
-        $article->update($data);
         return $article;
     }
 

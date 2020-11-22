@@ -14,6 +14,7 @@ use App\Services\Categories\Repositories\CategoriesRepository;
 use App\Services\Categories\Repositories\CategoryRepositoryInterface;
 use App\Services\Tags\Repositories\TagRepositoryInterface;
 use App\Services\Tags\Repositories\TagsRepository;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
 
@@ -44,6 +45,10 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('parts.front.navbar', function ($view) {
             $cats = Category::all();
             $view->with('cats', $cats);
+        });
+        view()->composer('parts.admin.aside.aside', function ($view) {
+            $user = Auth::user();
+            $view->with('user', $user);
         });
 
 //        view()->composer('parts.front.navbar', function ($view) {

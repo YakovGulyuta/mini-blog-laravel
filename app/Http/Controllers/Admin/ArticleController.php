@@ -107,10 +107,18 @@ class ArticleController extends Controller
      * @param int $article
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(ArticleCreateRequest $request, $articleId)
+    public function update(ArticleCreateRequest $request, $articleId)// ТЕСТОВЫЕ
     {
         $article = $this->articleService->update($request->all(), $articleId);
         $article = $article->id;
+
+        $articleNew = Article::find($articleId);
+        $data = $request->all();
+        if ($file = Article::uploadImage($request, $articleNew->thumbnail)) {
+            $data['thumbnail'] = $file;
+        }
+        $articleNew->update($data);
+
         return redirect()->route('articles.edit', compact('article'))->with('success', 'Изменения сохранены');
     }
 

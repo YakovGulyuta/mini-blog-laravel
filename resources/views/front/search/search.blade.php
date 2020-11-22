@@ -30,7 +30,7 @@
                     <div class="blog-box wow fadeIn">
                         <div class="post-media">
                             <a href="{{ route('article.show', ['slug' => $article->slug]) }}" title="">
-                                <img src="{{ 1 }}" alt="" class="img-fluid">
+                                <img src="{{ $article->getImage() }}" alt="" class="img-fluid">
                                 <div class="hovereffect">
                                     <span></span>
                                 </div>

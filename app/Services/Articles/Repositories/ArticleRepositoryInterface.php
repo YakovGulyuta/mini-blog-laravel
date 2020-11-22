@@ -4,6 +4,7 @@
 namespace App\Services\Articles\Repositories;
 
 
+use App\Http\Requests\Admin\Article\ArticleCreateRequest;
 use App\Model\Category;
 
 interface ArticleRepositoryInterface

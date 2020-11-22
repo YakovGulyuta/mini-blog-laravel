@@ -2,6 +2,8 @@
 
 namespace App\Services\Articles;
 
+use App\Http\Requests\Admin\Article\ArticleCreateRequest;
+use App\Model\Article;
 use App\Services\Articles\Repositories\ArticleRepositoryInterface;
 
 class ArticlesService
@@ -47,6 +49,7 @@ class ArticlesService
     public function update($data, $articleId)
     {
         $article = $this->articleRepository->update($data, $articleId);
+        $article->update();
         return $article;
     }
 

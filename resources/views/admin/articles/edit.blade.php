@@ -25,7 +25,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Статья "{{ $article->title }} {{ $article->id }}"</h3>
+                            <h3 class="card-title">Статья "{{ $article->title }}"</h3>
                         </div>
                         <!-- /.card-header -->
                         @include('admin.errors.validate_errors')
@@ -78,7 +78,7 @@
                                             <label class="custom-file-label" for="thumbnail">Choose file</label>
                                         </div>
                                     </div>
-                                    <div><img src="{{ 1 }}" alt="" class="img-thumbnail mt-2" width="200"></div>
+                                    <div><img src="{{ $article->getImage() }}" alt="" class="img-thumbnail mt-2" width="200"></div>
                                 </div>
 
                             </div>

@@ -24,7 +24,7 @@
                 <div class="blog-box wow fadeIn">
                     <div class="post-media">
                         <a href="marketing-single.html" title="">
-                            <img src="/assets/front/upload/market_blog_05.jpg" alt="" class="img-fluid">
+                            <img src="{{ $article->getImage() }}" alt="" class="img-fluid">
                             <div class="hovereffect">
                                 <span></span>
                             </div>
