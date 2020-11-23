@@ -50,7 +50,7 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => public_path('uploads'),
+            'root' => storage_path('app/public'),//папка storage/app/public
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
@@ -80,6 +80,7 @@ return [
 
     'links' => [
         public_path('public') => storage_path('app/public'),
+        //после команды симлинка в папке public появляется указанная ссылка на storage storage_path('app/public')
     ],
 
 ];

@@ -23,4 +23,9 @@ class Tag extends Model
         return $this->belongsToMany(Article::class);
     }
 
+    public function getAllArticlesByDesc()//ПРВЕРИТЬ
+    {
+        return $this->articles()->with('category')->orderBy('id', 'desc')->paginate(1);
+    }
+
 }

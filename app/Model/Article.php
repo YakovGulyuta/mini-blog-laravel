@@ -40,6 +40,8 @@ class Article extends Model
         return $query->where('title', 'LIKE', "%{$s}%");
     }
 
+
+
 /////////////////////// ТЕСТОВЫЕ/////////////////////
     public static function uploadImage($request, $image = null)
     {
@@ -48,7 +50,7 @@ class Article extends Model
                 Storage::delete($image);
             }
             $folder = date('Y-m-d');
-            return $request->file('thumbnail')->store("images/{$folder}");
+            return $request->file('thumbnail')->store("{$folder}");
         }
         return null;
     }
@@ -58,6 +60,6 @@ class Article extends Model
         if (!$this->thumbnail) {
             return asset("no-image.png");
         }
-        return asset("uploads/{$this->thumbnail}");
+        return asset("public/{$this->thumbnail}");
     }
 }
