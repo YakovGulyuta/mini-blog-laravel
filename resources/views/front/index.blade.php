@@ -23,7 +23,7 @@
             <div class="blog-custom-build">
                 <div class="blog-box wow fadeIn">
                     <div class="post-media">
-                        <a href="marketing-single.html" title="">
+                        <a href="{{ route('article.show' , ['slug' => $article->slug ]) }}" title="">
                             <img src="{{ $article->getImage() }}" alt="" class="img-fluid">
                             <div class="hovereffect">
                                 <span></span>
@@ -33,7 +33,7 @@
                     </div>
                     <!-- end media -->
                     <div class="blog-meta big-meta text-center">
-                        <h4><a href="marketing-single.html" title="">{!! $article->description !!}</a>
+                        <h4><a href="{{ route('article.show' , ['slug' => $article->slug ]) }}" title="">{!! $article->description !!}</a>
                         </h4>
                         {!! $article->content !!}
                         <small><a href="{{ route('category.show' , ['slug' => $article->category->slug ]) }}" title="">{{ $article->category->title }}</a></small>
