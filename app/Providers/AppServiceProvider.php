@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+
 use App\Model\Article;
 use App\Model\Category;
 use App\Model\Tag;
+
 use App\Observers\ArticleObserver;
 use App\Observers\CategoryObserver;
 use App\Observers\TagObserver;

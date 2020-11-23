@@ -69,16 +69,17 @@ class ArticleController extends Controller
         return view('admin.articles.create', compact('categories', 'tags'));
     }
 
+
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
+     * @param ArticleCreateRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(ArticleCreateRequest $request)
     {
 
-        $this->articleService->create($request->all());
+         $this->articleService->create($request->all());
+
+
 
         return redirect()->route('articles.index')->with('success', 'Статья добавлена');
     }
@@ -113,11 +114,13 @@ class ArticleController extends Controller
         $article = $article->id;
 
         $articleNew = Article::find($articleId);
-        $data = $request->all();
-        if ($file = Article::uploadImage($request, $articleNew->thumbnail)) {
-            $data['thumbnail'] = $file;
+        if ($request->hasFile('thumbnail')){
+            $data = $request->all();
+            if ($file = $articleNew->uploadImage($request, $articleNew->thumbnail)) {
+                $data['thumbnail'] = $file;
+            }
+            $articleNew->update($data);
         }
-        $articleNew->update($data);
 
         return redirect()->route('articles.edit', compact('article'))->with('success', 'Изменения сохранены');
     }

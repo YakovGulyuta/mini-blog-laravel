@@ -2,9 +2,9 @@
 
 namespace App\Model;
 
+use App\Components\uploads\Uploads;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 /**
@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Storage;
  * @method static where(string $string, string $slug)
  * @method static like($s)
  */
-class Article extends Model
+class Article extends Uploads
 {
 
     protected $fillable = ['title', 'description', 'content', 'category_id', 'thumbnail'];
@@ -41,25 +41,4 @@ class Article extends Model
     }
 
 
-
-/////////////////////// ТЕСТОВЫЕ/////////////////////
-    public static function uploadImage($request, $image = null)
-    {
-        if ($request->hasFile('thumbnail')) {
-            if ($image) {
-                Storage::delete($image);
-            }
-            $folder = date('Y-m-d');
-            return $request->file('thumbnail')->store("{$folder}");
-        }
-        return null;
-    }
-
-    public function getImage()
-    {
-        if (!$this->thumbnail) {
-            return asset("no-image.png");
-        }
-        return asset("public/{$this->thumbnail}");
-    }
 }

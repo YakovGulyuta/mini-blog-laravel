@@ -50,7 +50,7 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),//папка storage/app/public
+            'root' => storage_path('app/public'),//папка storage/app/public, сохранение идет сюда
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],

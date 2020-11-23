@@ -45,7 +45,16 @@ class ArticlesRepository implements ArticleRepositoryInterface
      */
     public function create(array $data)
     {
+//dd($data);
         $article = new Article();
+//        if (!empty($data['thumbnail'])) {
+//
+//            if ($file = $article->uploadImage($data, $article->thumbnail)) {
+//                $data['thumbnail'] = $file;
+//            }
+//            $article->create($data);
+//            return $article;
+//        }
         $article->create($data);
         return $article;
     }
@@ -58,8 +67,8 @@ class ArticlesRepository implements ArticleRepositoryInterface
     public function update($data, $articleId)
     {
         $article = Article::find($articleId);
-        if (!empty($data['tags'])){
-        $article->tags()->sync($data['tags']);
+        if (!empty($data['tags'])) {
+            $article->tags()->sync($data['tags']);
         } else {
             $article->tags()->detach();
         }

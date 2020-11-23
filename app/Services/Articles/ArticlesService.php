@@ -27,6 +27,7 @@ class ArticlesService
      */
     public function create($data)
     {
+
         $article = $this->articleRepository->create($data);
         return $article;
     }
